@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:syncfusion_maui_toolkit_areaseries_issue.ViewModels"
+             x:Class="syncfusion_maui_toolkit_areaseries_issue.MainPage"
+             xmlns:chart="clr-namespace:Syncfusion.Maui.Toolkit.Charts;assembly=Syncfusion.Maui.Toolkit"
+             x:DataType="vm:MainPageViewModel"
+             >
+             
+    <VerticalStackLayout Padding="6">
+        <Button Text="Click to toggle the data"
+                Command="{Binding ToggleDataCommand}"
+                HorizontalOptions="Center" />
+        <Label Text="LineSeries" FontAttributes="Bold" Margin="0,0,0,12" />
+        <chart:SfCartesianChart HeightRequest="200" Margin="3,0,3,6">
+
+            <chart:SfCartesianChart.XAxes>
+                <chart:NumericalAxis ShowMajorGridLines="false" Interval="2" PlotOffsetStart="8" PlotOffsetEnd="8">
+                    <chart:NumericalAxis.LabelStyle>
+                        <chart:ChartAxisLabelStyle TextColor="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray100}}" />
+                    </chart:NumericalAxis.LabelStyle>
+                </chart:NumericalAxis>
+            </chart:SfCartesianChart.XAxes>
+
+            <chart:SfCartesianChart.YAxes>
+                <chart:NumericalAxis ShowMajorGridLines="False">
+                    <chart:NumericalAxis.LabelStyle>
+                        <chart:ChartAxisLabelStyle LabelFormat="C0" TextColor="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray100}}" />
+                    </chart:NumericalAxis.LabelStyle>
+                </chart:NumericalAxis>
+            </chart:SfCartesianChart.YAxes>
+
+
+            <chart:SfCartesianChart.Series>
+                <chart:LineSeries Label="Income" 
+          EnableTooltip="True" EnableAnimation="True" StrokeWidth="1"
+          ItemsSource="{Binding IncomeData, Mode=OneWay}"
+          Opacity="1"
+          ShowMarkers="False"
+          XBindingPath="Year" 
+          YBindingPath="Amount"
+          LegendIcon="SeriesType"
+          Fill="#FF1DD800" >
+                    
+                </chart:LineSeries>
+
+                <chart:LineSeries Label="RemainingBalanceFlow" 
+          EnableTooltip="True" EnableAnimation="True" StrokeWidth="1"
+          ItemsSource="{Binding RemainingBalanceFlowData, Mode=OneWay}"
+          ShowMarkers="False"
+          XBindingPath="Year" 
+          YBindingPath="Amount"
+          LegendIcon="SeriesType" Fill="#FFE96CF0">
+
+                </chart:LineSeries>
+                <chart:LineSeries Label="Expense" 
+        EnableTooltip="True" EnableAnimation="True" StrokeWidth="1"
+        ItemsSource="{Binding ExpenseData, Mode=OneWay}"
+        Opacity="1"
+        ShowMarkers="False"
+        XBindingPath="Year" 
+        YBindingPath="Amount"
+        LegendIcon="Circle"
+        Fill="#FF4A9DEB">
+                    
+                </chart:LineSeries>
+            </chart:SfCartesianChart.Series>
+        </chart:SfCartesianChart>
+
+        <Label Text="AreaSeries" FontAttributes="Bold" Margin="0,0,0,12" />
+        <chart:SfCartesianChart HeightRequest="200" Margin="3,0,3,6">
+
+            <chart:SfCartesianChart.XAxes>
+                <chart:NumericalAxis ShowMajorGridLines="false" Interval="2" PlotOffsetStart="8" PlotOffsetEnd="8">
+                    <chart:NumericalAxis.LabelStyle>
+                        <chart:ChartAxisLabelStyle TextColor="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray100}}" />
+                    </chart:NumericalAxis.LabelStyle>
+                </chart:NumericalAxis>
+            </chart:SfCartesianChart.XAxes>
+
+            <chart:SfCartesianChart.YAxes>
+                <chart:NumericalAxis ShowMajorGridLines="False">
+                    <chart:NumericalAxis.LabelStyle>
+                        <chart:ChartAxisLabelStyle LabelFormat="C0" TextColor="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray100}}" />
+                    </chart:NumericalAxis.LabelStyle>
+                </chart:NumericalAxis>
+            </chart:SfCartesianChart.YAxes>
+
+
+                <chart:SfCartesianChart.Series>
+                    <chart:AreaSeries Label="Income" 
+                  EnableTooltip="True" EnableAnimation="True" StrokeWidth="1"
+                  ItemsSource="{Binding IncomeData, Mode=OneWay}"
+                  Opacity="1"
+                  ShowMarkers="False"
+                  XBindingPath="Year" 
+                  YBindingPath="Amount"
+                  LegendIcon="SeriesType"
+                  Stroke="#FF1DD800" Fill="#201DD800" >
+
+                    </chart:AreaSeries>
+
+                    <chart:AreaSeries Label="RemainingBalanceFlow" 
+                  EnableTooltip="True" EnableAnimation="True" StrokeWidth="1"
+                  ItemsSource="{Binding RemainingBalanceFlowData, Mode=OneWay}"
+                  ShowMarkers="False"
+                  XBindingPath="Year" 
+                  YBindingPath="Amount"
+                  LegendIcon="SeriesType" Stroke="#FFE96CF0" Fill="#20E96CF0">
+
+
+                    </chart:AreaSeries>
+                <chart:AreaSeries Label="Expense" 
+                EnableTooltip="True" EnableAnimation="True" StrokeWidth="1"
+                ItemsSource="{Binding ExpenseData, Mode=OneWay}"
+                Opacity="1"
+                ShowMarkers="False"
+                XBindingPath="Year" 
+                YBindingPath="Amount"
+                LegendIcon="Circle"
+                Stroke="#FF4A9DEB" Fill="#204A9DEB">
+                </chart:AreaSeries>
+            </chart:SfCartesianChart.Series>
+        </chart:SfCartesianChart>
+
+    </VerticalStackLayout>
+
+</ContentPage>
